@@ -7,7 +7,37 @@ box-sizing:border-box;
 font-family: 'spartan', sans-serif;
 
 
+.container{
+    width: 375;
+    height: 820;
+    background: #f9fafa(240,239,243);
+    border-radius: 15px;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.03);
+    padding: 20px;
+}
 
+.container form{
+    width: 100%;
+    border:1px solid rgb(50, 110, 215);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.container form input{
+border:none;
+outline:none;
+box-shadow: none;
+width: 100%;
+font-size: 16px;
+font-weight: 600;
+padding: 8px 10px;
+}
+
+.container form i{
+    padding-left: ;
+}
 }
 h1{
     font-size:50px;
