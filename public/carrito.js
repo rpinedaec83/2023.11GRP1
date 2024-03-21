@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                         iDown.classList.add("fas")
                                         iDown.classList.add("fa-minus")
                                         buttonDown.appendChild(iDown);
-                                cardItem4.appendChild(buttonDown);
 
                                     const input = document.createElement('input')
                                     input.classList.add("form-control");
@@ -89,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                         iPlus.classList.add("fas")
                                         iPlus.classList.add("fa-plus")
                                         buttonPlus.appendChild(iPlus);
-                                cardItem4.appendChild(buttonPlus);
 
                                 var cardItem5 = document.createElement("div");
                                 cardItem5.classList.add("col-md-2");

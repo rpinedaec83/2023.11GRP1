@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 
 require("./app/routes/cart.routes")(app);
 require("./app/routes/cupon.routes")(app);
+require("./app/routes/producto.routes")(app);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -3,8 +3,11 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
         },
-        descripcion: {
+        core: {
             type: DataTypes.STRING,
+        },
+        cant_star: {
+            type: DataTypes.INTEGER,
         },
         precio: {
             type: DataTypes.STRING,
