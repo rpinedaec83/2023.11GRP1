@@ -176,7 +176,7 @@ justify-content: center;
 }
 
 #hero button{
-    background-image: url("button.png");
+    background-image: '';
     background-color: transparent;
     color:#5656e7;
     border:0;

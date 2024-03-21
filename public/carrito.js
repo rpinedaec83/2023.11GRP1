@@ -6,13 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function getAllItemCart() {
         carrito = [];
         let url = "/api/cart?user_id=1";
-
+        console.log(url)
         fetch(url, {
             method: "GET"
         }).then(res => res.json())
             .catch(error => {
             })
         .then(response => {
+            console.log(response)
             const itemsCarrito = document.getElementById('content-cart');
             itemsCarrito.innerHTML = '';
             for (let index = 0; index < response.length; index++) {
@@ -141,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('#content-'+id+' .btn').forEach(el => el.setAttribute('disabled', true));
         document.querySelectorAll('#content-'+id+' input').forEach(el => el.setAttribute('disabled', true));
         let url = "/api/cart/changeCant/"+id;
+        console.log(url)
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -191,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('#content-'+id+' .btn').forEach(el => el.setAttribute('disabled', true));
         document.querySelectorAll('#content-'+id+' input').forEach(el => el.setAttribute('disabled', true));
         let url = "/api/cart/"+id;
+        console.log(url)
         fetch(url, {
             method: 'DELETE',
             headers: {
@@ -218,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false
         }
         let url = "/api/cupon/?code="+cupon;
-
+        console.log(url)
         fetch(url, {
             method: "GET"
         }).then(res => res.json())

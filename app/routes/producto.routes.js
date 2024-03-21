@@ -9,6 +9,7 @@ module.exports = app => {
     router.put("/:id", producto.update);
     router.delete("/:id", producto.delete);
     router.delete("/", producto.deleteAll);
+    router.get("/get/categoria", producto.getCategoria);
 
     app.use('/api/producto', router);
 

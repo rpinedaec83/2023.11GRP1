@@ -31,10 +31,30 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     
     const filter = req.query.filter;
+    const categoria = req.query.categoria;
 
     Producto.findAll( { 
             where: {
                 name:  { [Op.like]: `%${filter}%` }, 
+                categoria: { [Op.like]: `%${categoria}%` }, 
+                state : 'ACTIVE'
+            }  
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+};
+exports.getCategoria = (req, res) => {
+    Producto.findAll( {
+            order: [ ['categoria', 'ASC'] ],
+            group: 'categoria', 
+            where: {
                 state : 'ACTIVE'
             }  
         })

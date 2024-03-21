@@ -22,7 +22,14 @@
                 <li><a>Blog</a></li>
                 <li><a>About</a></li>
                 <li><a>Mis compras</a></li>
-                <li><a href="carrito.html"><i class="fas fa-shopping-cart cart"></i></a>
+                <li>
+                    <a href="carrito.html" class="position-relative">
+                        <i class="fas fa-shopping-cart cart"></i>
+                    </a>
+                    <span style="display: none;" id="number-cart" class="position-absolute top-20 start-100 translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span>
+                </li>
             </ul>
         </div>
     </section>
@@ -72,9 +79,14 @@
     <h2> Cursos Populares</h2>
     <p> Cursos de Liderazgo</p>
     <section class="container">
-        <form>
-            <i class="fas fa-search"></i>
-            <input type="text" name="" id="search-item" placeholder="Buscar Producto">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="search-item" placeholder="Buscar Producto">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorias
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" id="dropdown-select">
+            </ul>
+        </div>
     </section>
     <div class='row' id="content-course">
        
@@ -106,6 +118,7 @@
 </section>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
 

@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
         core: {
             type: DataTypes.STRING,
         },
+        categoria: {
+            type: DataTypes.STRING,
+        },
         cant_star: {
             type: DataTypes.INTEGER,
         },

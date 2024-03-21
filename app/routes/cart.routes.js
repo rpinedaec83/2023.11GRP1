@@ -5,6 +5,7 @@ module.exports = app => {
 
     router.post("/", cart.create);
     router.get("/", cart.findAll);
+    router.get("/getTotalUser/", cart.getTotalUser);
     router.get("/:id", cart.findOne);
     router.put("/:id", cart.update);
     router.delete("/:id", cart.delete);

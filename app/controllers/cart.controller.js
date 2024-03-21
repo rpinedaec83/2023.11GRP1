@@ -4,17 +4,17 @@ const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.nombres) {
+    /*if (!req.body.nombres) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
-    }
+    }*/
     const cart = {
         item_id: req.body.item_id,
         user_id: req.body.user_id,
-        cant: req.body.cantidad,
-        price: req.body.precio,
+        cant: req.body.cant,
+        price: req.body.price,
         state: 'CART',
     };
     Cart.create(cart)
@@ -32,10 +32,31 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     
     const user_id = req.query.user_id;
-    
-    var condition = user_id ? { user_id:  user_id }  : null;
 
-    Cart.findAll( { where: {user_id:  user_id}  })
+    Cart.findAll( { 
+        include: ["producto"],
+        where: {user_id:  user_id}  
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+};
+exports.getTotalUser = (req, res) => {
+    
+    const user_id = req.query.user_id;
+
+    Cart.findAll( { 
+            where: {
+                user_id:  user_id,
+                state: 'CART'
+            }  
+        })
         .then(data => {
             res.send(data);
         })
