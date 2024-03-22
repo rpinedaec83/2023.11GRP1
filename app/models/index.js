@@ -27,10 +27,11 @@ db.producto = require("./producto.model.js")(sequelize, Sequelize);
 
 
 //agregar relacion
-db.cart.hasOne(db.producto,{
-  foreignKey: 'id',
-  targetKey: 'item_id',
-  as:"producto"
-});
+
+db.cart.belongsTo(db.producto, 
+  {
+    foreignKey: 'item_id' // es cart
+  }
+);
 
 module.exports = db;
