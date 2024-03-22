@@ -35,7 +35,8 @@ exports.findAll = (req, res) => {
 
     Cart.findAll( { 
         include: ["producto"],
-        where: {user_id:  user_id}  
+        where: {user_id:  user_id},
+        state: 'CART' 
     })
         .then(data => {
             res.send(data);

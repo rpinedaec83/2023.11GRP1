@@ -13,11 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
             })
         .then(response => {
-            console.log(response)
             const itemsCarrito = document.getElementById('content-cart');
             itemsCarrito.innerHTML = '';
             for (let index = 0; index < response.length; index++) {
                 const element = response[index];
+                console.log(element)
                 carrito.push({ id: element['id'],price: element['price'], cant: element['cant'] });
                     var cardRounded = document.createElement("div");
                     cardRounded.classList.add("card");
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 cardItem1.classList.add("col-lg-2");
                                 cardItem1.classList.add("col-xl-2");
                                     const img = document.createElement('img');
-                                    img.src = "img/imagen3.jpg";
+                                    img.src = element['producto']['urlPhoto'];
                                     img.classList.add("img-fluid");
                                     img.classList.add("rounded-3");
                                     img.style.height = '120px';
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     p.classList.add("lead")
                                     p.classList.add("fw-normal")
                                     p.classList.add("mb-2")
-                                    p.innerText = 'Ropa'
+                                    p.innerText = element['producto']['name'];
                                     cardItem2.appendChild(p);
 
                                 var cardItem4 = document.createElement("div");
