@@ -363,15 +363,19 @@ color:#6ba65b;
     font-size: 22px;
     font-weight: 700;
     color:#f7faf7;
+    text-align: right;
 }
 
-
+#mapa h7{
+    align-items: right;
+}
 
 
 #newletter p{
     font-size: 14px;
     font-weight: 600;
     color:#f7f9f7;
+    text-align: right;
 }
 
 #newsletter input{
