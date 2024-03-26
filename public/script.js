@@ -1,6 +1,22 @@
 var categoriaAll = ''
 const user_id = '1'
+
 document.addEventListener('DOMContentLoaded', function() {
+    user()
+    function user() {
+        let url = "/api/user/";
+        console.log(url)
+        fetch(url, {
+            method: "GET"
+        }).then(res => res.json())
+        .catch(error => {
+            })
+        .then(response => {
+            console.log(response)
+            document.getElementById('username').innerText = 'Bienvenido '+ response.username+'!';
+        });
+    }
+
     function getCantCart() {
         let url = "/api/cart/getTotalUser?user_id="+user_id;
         console.log(url)

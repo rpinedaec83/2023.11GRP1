@@ -25,6 +25,7 @@ db.cart = require("./cart.model.js")(sequelize, Sequelize);
 db.cupon = require("./cupon.model.js")(sequelize, Sequelize);
 db.producto = require("./producto.model.js")(sequelize, Sequelize);
 
+db.user = require("./user.model.js")(sequelize, Sequelize);
 
 //agregar relacion
 

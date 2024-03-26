@@ -10,9 +10,11 @@ exports.create = (req, res) => {
         });
         return;
     }*/
+    const user_id = req.userId;
+    console.log(user_id)
     const cart = {
         item_id: req.body.item_id,
-        user_id: req.body.user_id,
+        user_id: user_id,
         cant: req.body.cant,
         price: req.body.price,
         state: 'CART',
@@ -31,8 +33,8 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     
-    const user_id = req.query.user_id;
-
+    const user_id = req.userId;
+    console.log(user_id)
     Cart.findAll( { 
         include: ["producto"],
         where: {user_id:  user_id},
@@ -50,7 +52,8 @@ exports.findAll = (req, res) => {
 };
 exports.getTotalUser = (req, res) => {
     
-    const user_id = req.query.user_id;
+    const user_id = req.userId;
+    console.log(user_id)
 
     Cart.findAll( { 
             where: {
