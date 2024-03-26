@@ -73,12 +73,15 @@
                               <p class="mb-2 text-dark">Total</p>
                               <p class="mb-2 text-dark" id="total">$00.00</p>
                             </div>
-        
-                            <button type="button" class="btn btn-info btn-block btn-lg">
-                              <div class="d-flex justify-content-between">
-                                <span class="h6 mt-2">Continuar con el pago <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                              </div>
-                            </button>
+                            <script async
+                            src="https://js.stripe.com/v3/buy-button.js">
+                          </script>
+                          
+                          <stripe-buy-button
+                            buy-button-id="buy_btn_1Oyj06CxLTx95Do8EkTqbt1U"
+                            publishable-key="pk_test_51Or8dWCxLTx95Do8Dl1eOolNmQWgpi5usXYlfmYEWaxTTgWPPKnwn1UAgC4muEXZjMFZwmDTkNKW9u4tIgB8ZrrP00i3TcbmGS"
+                          >
+                          </stripe-buy-button>
         
                           </div>
                         </div>
