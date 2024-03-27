@@ -2,7 +2,60 @@ let carrito = [];
 let subTotalG = 0;
 let cuponG = 0;
 let totalG = 0;
+let stripe_cupon_id = '';
+let stripe;
 document.addEventListener('DOMContentLoaded', function() {
+    stripe = Stripe('pk_test_51Ow6H1LhefJPPZ8eK39qzTGu9P9dCPmphuqPcKYpfKnyW2Vtj6Vcihj6kDxoGxirjNMS3gy2VbPkCc6NdobBF5pj00cK1hFib6');
+
+    const form = document.getElementById('formulario');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        stripe.createToken(card).then(function(result) {
+        if (result.error) {
+
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+        } else {
+    
+            stripeTokenHandler(result.token);
+        }
+        });
+    });
+
+    function compras() {
+        if (carrito.length === 0) {
+          alert('El carrito está vacío. Agrega productos antes de continuar');
+          return;
+        }
+      
+        fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ carrito: carrito,stripe_cupon_id:stripe_cupon_id }) 
+        })
+      
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(session) {
+            
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function(result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function(error) {
+          console.error('Error:', error);
+        });
+        alert('Compra completada!');
+      }
+
     user()
     getCantCart()
     function user() {
@@ -47,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let index = 0; index < response.length; index++) {
                 const element = response[index];
                 console.log(element)
-                carrito.push({ id: element['id'],price: element['price'], cant: element['cant'] });
+                carrito.push({ id: element['id'],price: element['price'], cant: element['cant'],image:element['producto']['urlPhoto'],name:element['producto']['name'] });
                     var cardRounded = document.createElement("div");
                     cardRounded.classList.add("card");
                     cardRounded.classList.add("mb-4");
@@ -260,6 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
             for (let index = 0; index < response.length; index++) {
                 cuponG = response[index]['descuento'];
+                stripe_cupon_id = response[index]['stripe_id'];
                 updateDetail()
                 alert('Se encontro cupon')
             }
@@ -271,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById("btn_cupon").onclick = function() {addCupon()};
-
+    document.getElementById("btn_compras").onclick = function() {compras()};
 
     getAllItemCart();
 })

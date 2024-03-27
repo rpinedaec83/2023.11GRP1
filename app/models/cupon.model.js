@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         state: {
             type: DataTypes.STRING,
         },
+        stripe_id: {
+            type: DataTypes.STRING,
+        },
     });
     return Cupon;
 };
