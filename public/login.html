@@ -19,25 +19,18 @@
     <title>Login First</title>
     <link rel="stylesheet" href="/styles/login.css">
 </head>
-
-<div class="imgcontainer">
-    <img src="imagenes/username.png" alt="Avatar" class="avatar" style="width: 20%;border-radius: 50%;margin: 4px; position: absolute;left:20%;margin-left: 280px;>
-    
-        width: 40%;
-        border-radius: 50%;
-  </div>
 <body>
-<div class="container" >
+<div class="container">
     <div class="login-container">
         <div id="output"></div>
         <div class="avatar"></div>
         <div class="form-box">
             <form action="/api/auth/signin" method="post">
-                <input name="username" type="text" placeholder="username" style="height:30px;width:400px; position: absolute; left: 20%; margin-left: 225px; background: rgb(251, 251, 253); border: 2px solid rgb(131, 9, 9);top:400px">
+                <input name="username" type="text" placeholder="username" style="height:30px;width:400px" text-align="align-items-center">
                 <p></p>
-                <input type="password" placeholder="password" name="password" style="height:30px;width:400px; position: absolute; left: 20%; margin-left: 225px; background: rgb(251, 251, 253); border: 2px solid rgb(131, 9, 9); top:450px" >
+                <input type="password" placeholder="password" name="password" style="height:30px;width:400px" >
                 <p></p>
-                <button class="btn btn-info btn-block login" style="height:50px;width:100px;position:absolute;left:20%; margin-left:380px ; background-color: rgb(160, 249, 65); top:550px; border: 2px solid rgb(221, 34, 34);" type="submit">Login</button>
+                <button class="btn btn-info btn-block login" style="height:50px;width:100px;background-color: aqua;" type="submit">Login</button>
             
             </form>
         
