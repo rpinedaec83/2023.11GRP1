@@ -29,6 +29,27 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('El carrito está vacío. Agrega productos antes de continuar');
           return;
         }
+
+        for (let index = 0; index < carrito.length; index++) {
+            const element = carrito[index];
+            fetch('/api/cart/'+element['id'], {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: element['id'] }) 
+              })
+              .then(function(response) {
+              })
+              .then(function(session) {
+                  
+              })
+              .then(function(result) {
+              })
+              .catch(function(error) {
+                console.error('Error:', error);
+              });
+        }
       
         fetch('/create-checkout-session', {
           method: 'POST',

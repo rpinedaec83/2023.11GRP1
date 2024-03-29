@@ -48,33 +48,8 @@ app.post('/create-checkout-session', async (req, res) => {
   const stripe_cupon_id = req.body.stripe_cupon_id;
 
   productosSeleccionados.forEach(producto => {
-      const orden = {
-          id: producto.nombre,
-          price: producto.price,
-          cant: producto.cant
-      };
       console.log('Orden de compra guardad.');
-      /*connection.query('INSERT INTO OrdenDeCompra SET ?', orden, function(error, results, fields) {
-          if (error) throw error;
-          console.log('Orden de compra guardad.');
-      });*/
   });
-  /*
-  if (req.body.tarjeta) {
-
-      const tarjeta = req.body.tarjeta;
-      const datosTarjeta = {
-        numero: tarjeta.numero,
-          cvv: tarjeta.cvv,
-          nombre: tarjeta.nombre,
-          fecha_expiracion: tarjeta.fecha_expiracion,
-      };
-
-      connection.query('INSERT INTO DatosTarjeta SET ?', datosTarjeta, function(error, results, fields) {
-          if (error) throw error;
-          console.log('Datos de tarjeta guardados.');
-      });
-  }*/
 
 
   const line_items = productosSeleccionados.map(producto => ({

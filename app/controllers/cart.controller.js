@@ -37,8 +37,10 @@ exports.findAll = (req, res) => {
     console.log(user_id)
     Cart.findAll( { 
         include: ["producto"],
-        where: {user_id:  user_id},
-        state: 'CART' 
+        where: {
+            user_id:  user_id,
+            state: 'CART' 
+        }
     })
         .then(data => {
             res.send(data);
@@ -71,6 +73,27 @@ exports.getTotalUser = (req, res) => {
             });
         });
 };
+exports.obtenerListaDeCompras = (req, res) => {
+    const user_id = req.userId;
+    console.log(user_id)
+
+    Cart.findAll( { 
+        include: ["producto"],
+            where: {
+                user_id:  user_id,
+                state: 'FINISH'
+            }  
+        })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving tutorials."
+            });
+        });
+};
 exports.findOne = (req, res) => {
     const id = req.params.id;
 
@@ -90,10 +113,31 @@ exports.findOne = (req, res) => {
             });
         });
 };
+
+exports.finishCart = (req, res) => {
+    const user_id = req.userId;
+    Cart.update({ state: 'FINISH' }, {
+        where: { 
+            user_id: user_id,
+            state: 'CART'
+        }
+    })
+        .then(num => {
+            res.send({
+                message: "Se realizo la compra de todos los productos del carrito"
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating Tutorial with id=" 
+            });
+        });
+};
+
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Cart.update(req.body, {
+    Cart.update({ state: 'FINISH' }, {
         where: { id: id }
     })
         .then(num => {
