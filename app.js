@@ -97,16 +97,16 @@ app.post('/create-checkout-session', async (req, res) => {
         discounts: [{
           coupon: stripe_cupon_id,
         }],
-        success_url: 'http://localhost:3000/carrito.html',
-        cancel_url: 'http://localhost:3000/carrito.html',
+        success_url: 'http://51.222.87.39:3500/carrito.html',
+        cancel_url: 'http://51.222.87.39:3500/carrito.html',
     });
   }else{
      session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:3000/carrito.html',
-      cancel_url: 'http://localhost:3000/carrito.html',
+      success_url: 'http://51.222.87.39:3500/carrito.html',
+      cancel_url: 'http://51.222.87.39:3500/carrito.html',
   });
   }
   
